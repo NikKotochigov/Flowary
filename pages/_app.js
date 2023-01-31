@@ -1,6 +1,6 @@
 // import { CacheProvider } from '@emotion/react';
 import { ThemeProvider } from '@mui/material'
-import Layout from '../src/components/layout/Layout'
+import Layout from '../src/components/layout/layout'
 import { theme } from '../src/theme'
 // import { createEmotionCache } from '../utils/create-emotion-cache';
 
