@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { AppBar, Avatar, Badge, Box, IconButton, Toolbar, Tooltip, Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import { ConnectWallet } from '../connect-wallet/connectWallet';
 
 const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
@@ -42,21 +43,7 @@ export const DashboardNavbar = (props) => {
             <MenuIcon fontSize="small" />
           </IconButton>
           <Box sx={{ flexGrow: 1 }} />
-          <Button
-            onClick={() => console.log('zaebis!')}
-            color="primary"
-            variant="contained"
-            sx={{
-              cursor: 'pointer',
-              height: 50,
-              width: 160,
-              fontSize: '16px',
-              ml: 1
-            }}
-            src="/static/images/avatars/avatar_1.png"
-          >
-            Connect Metamask
-          </Button>
+          <ConnectWallet />
         </Toolbar>
       </DashboardNavbarRoot>
     </>
