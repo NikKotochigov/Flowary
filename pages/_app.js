@@ -5,6 +5,8 @@ import { chains, wagmiClient } from '../src/consts/wagmaConfiguration'
 import { theme } from '../src/theme'
 import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { WagmiConfig } from 'wagmi';
+import { Provider } from 'react-redux';
+import {store} from '../src/store/store'
 
 import "@rainbow-me/rainbowkit/styles.css";
 // import { createEmotionCache } from '../utils/create-emotion-cache';
@@ -17,13 +19,15 @@ const MyApp = ({ Component,
   <>
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
-        <ThemeProvider theme={theme}>
-          {/* <CacheProvider value={emotionCache}> */}
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-          {/* </CacheProvider> */}
-        </ThemeProvider>
+        <Provider store={store}>
+          <ThemeProvider theme={theme}>
+            {/* <CacheProvider value={emotionCache}> */}
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+            {/* </CacheProvider> */}
+          </ThemeProvider>
+        </Provider>
       </RainbowKitProvider>
     </WagmiConfig>
   </>

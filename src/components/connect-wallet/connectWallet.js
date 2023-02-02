@@ -1,7 +1,19 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit'
+import { useEffect } from 'react'
 import { ConnectWalletButton } from './connectWalletButton'
+import { useDispatch } from 'react-redux'
+import { setAccount, setConnected } from '../../store/reducers/wallet/reducer';
 
 function RenderConnectWalletButton({ chain, connected, account, openAccountModal, openChainModal, openConnectModal }) {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(setConnected(connected));
+    }, [connected]);
+
+    useEffect(() => {
+        dispatch(setAccount(account));
+    }, [account]);
 
     if (!connected) {
         return (

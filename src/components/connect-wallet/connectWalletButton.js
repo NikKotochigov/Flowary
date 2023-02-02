@@ -1,24 +1,3 @@
-// import Button from '@mui/material/Button'
-
-// export const ConnectWalletButton = () => {
-//     return (
-//         <Button
-//             color="primary"
-//             variant="contained"
-//             sx={{
-//                 cursor: 'pointer',
-//                 height: 50,
-//                 width: 160,
-//                 fontSize: '16px',
-//                 ml: 1
-//             }}
-//             src="/static/images/avatars/avatar_1.png"
-//         >
-//             Connect Metamask
-//         </Button>
-//     )
-// }
-
 import { styled } from '@mui/material/styles'
 import Button from '@mui/material/Button'
 // import appTheme from '../../ui-blocks/AppTheme'
