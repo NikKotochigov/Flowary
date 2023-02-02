@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import { styled } from '@mui/material/styles';
 import { AppBar, Avatar, Badge, Box, IconButton, Toolbar, Tooltip, Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -45,7 +45,7 @@ export const DashboardNavbar = (props) => {
           <Button
             onClick={() => console.log('zaebis!')}
             color="primary"
-            variant="contained"
+            variant="outlined"
             sx={{
               cursor: 'pointer',
               height: 50,
@@ -53,7 +53,6 @@ export const DashboardNavbar = (props) => {
               fontSize: '16px',
               ml: 1
             }}
-            src="/static/images/avatars/avatar_1.png"
           >
             Connect Metamask
           </Button>

@@ -27,6 +27,7 @@ export const NavItem = (props) => {
           startIcon={icon}
           disableRipple
           sx={{
+            fontSize: '18px',
             backgroundColor: active && 'rgba(255,255,255, 0.08)',
             borderRadius: 1,
             color: active ? 'secondary.main' : 'neutral.300',

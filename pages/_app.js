@@ -2,7 +2,7 @@
 import { ThemeProvider } from '@mui/material'
 import Layout from '../src/components/layout/layout'
 import { theme } from '../src/theme'
-// import { createEmotionCache } from '../utils/create-emotion-cache';
+// import { createEmotionCache } from '../src/utils/create-emotion-cache';
 
 // const clientSideEmotionCache = createEmotionCache();
 

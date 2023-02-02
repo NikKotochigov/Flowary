@@ -89,22 +89,36 @@ export const DashboardSidebar = (props) => {
           height: '100%'
         }}
       >
-          <Box sx={{ p: 3 }}>
+          <Box 
+          // sx={{ p: 3 }}
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+          }} 
+          >
             <NextLink
               href="/"
               passHref
             >
-              
-                <Logo
+
+<Image
+              alt="logo"
+              src="/static/images/Flowary.png"
+              width={200}
+              height={130}
+            />
+
+
+                {/* <Logo
                   sx={{
                     height: 42,
                     width: 42
                   }}
-                />
+                /> */}
              
             </NextLink>
           </Box>
-          <Box sx={{ px: 2 }}>
+          {/* <Box sx={{ px: 2 }}>
             <Box
               sx={{
                 alignItems: 'center',
@@ -141,7 +155,7 @@ export const DashboardSidebar = (props) => {
                 }}
               />
             </Box>
-          </Box>
+          </Box> */}
         <Divider
           sx={{
             borderColor: '#2D3748',

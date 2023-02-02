@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material';
+import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 
 export const theme = createTheme({
   breakpoints: {
@@ -11,6 +12,15 @@ export const theme = createTheme({
     }
   },
   components: {
+        // MuiOutlinedInput: {
+        //   styleOverrides: {
+        //     root: {
+        //    [`& .${outlinedInputClasses.notchedOutline}`]: {
+        //         border: 0,
+        //       }
+        //     }
+        //   }
+        // },
     MuiButton: {
       defaultProps: {
         disableElevation: true
@@ -39,11 +49,11 @@ export const theme = createTheme({
         }
       }
     },
-    MuiButtonBase: {
-      defaultProps: {
-        disableRipple: true
-      }
-    },
+    // MuiButtonBase: {
+    //   defaultProps: {
+    //     disableRipple: true
+    //   }
+    // },
     MuiCardContent: {
       styleOverrides: {
         root: {
@@ -100,13 +110,13 @@ export const theme = createTheme({
         }
       }
     },
-    MuiOutlinedInput: {
-      styleOverrides: {
-        notchedOutline: {
-          borderColor: '#E6E8F0'
-        }
-      }
-    },
+    // MuiOutlinedInput: {
+    //   styleOverrides: {
+    //     notchedOutline: {
+    //       borderColor: '#E6E8F0'
+    //     }
+    //   }
+    // },
     MuiTableHead: {
       styleOverrides: {
         root: {
@@ -226,7 +236,8 @@ export const theme = createTheme({
     '0px 25px 50px rgba(100, 116, 139, 0.25)',
     '0px 25px 50px rgba(100, 116, 139, 0.25)',
     '0px 25px 50px rgba(100, 116, 139, 0.25)',
-    '0px 25px 50px rgba(100, 116, 139, 0.25)'
+    '0px 25px 50px rgba(100, 116, 139, 0.25)',
+    '0 2px 14px 0 rgb(32 40 45 / 30%)'
   ],
   typography: {
     button: {
