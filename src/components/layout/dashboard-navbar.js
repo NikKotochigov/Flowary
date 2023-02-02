@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import { styled } from '@mui/material/styles';
 import { AppBar, Avatar, Badge, Box, IconButton, Toolbar, Tooltip, Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { ConnectWallet } from '../connect-wallet/connectWallet';

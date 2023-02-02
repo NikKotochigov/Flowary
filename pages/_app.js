@@ -3,13 +3,13 @@ import { ThemeProvider } from '@mui/material'
 import Layout from '../src/components/layout/layout'
 import { chains, wagmiClient } from '../src/consts/wagmaConfiguration'
 import { theme } from '../src/theme'
+// import { createEmotionCache } from '../src/utils/create-emotion-cache';
 import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { WagmiConfig } from 'wagmi';
 import { Provider } from 'react-redux';
 import {store} from '../src/store/store'
 
 import "@rainbow-me/rainbowkit/styles.css";
-// import { createEmotionCache } from '../utils/create-emotion-cache';
 
 // const clientSideEmotionCache = createEmotionCache();
 
