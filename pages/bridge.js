@@ -6,7 +6,7 @@ const Page = () => (
   <>
     <Head>
       <title>
-      FLOWery | Bridge
+      FLOWary | Bridge
       </title>
     </Head>
         <Box

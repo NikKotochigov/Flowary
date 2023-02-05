@@ -1,7 +1,11 @@
-import { createTheme } from '@mui/material';
+import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import { outlinedInputClasses } from '@mui/material/OutlinedInput';
+import bg_sidebar from '../../public/static/images/bg_sidebar.jpg'
 
-export const theme = createTheme({
+let theme = createTheme({
+  drawerPaper: {
+    backgroundImage: `url(${bg_sidebar})`
+  },
   breakpoints: {
     values: {
       xs: 0,
@@ -64,21 +68,21 @@ export const theme = createTheme({
         }
       }
     },
-    MuiCardHeader: {
-      defaultProps: {
-        titleTypographyProps: {
-          variant: 'h6'
-        },
-        subheaderTypographyProps: {
-          variant: 'body2'
-        }
-      },
-      styleOverrides: {
-        root: {
-          padding: '32px 24px'
-        }
-      }
-    },
+    // MuiCardHeader: {
+    //   defaultProps: {
+    //     titleTypographyProps: {
+    //       variant: 'h6'
+    //     },
+    //     subheaderTypographyProps: {
+    //       variant: 'body2'
+    //     }
+    //   },
+    //   styleOverrides: {
+    //     root: {
+    //       padding: '32px 24px'
+    //     }
+    //   }
+    // },
     MuiCssBaseline: {
       styleOverrides: {
         '*': {
@@ -142,6 +146,9 @@ export const theme = createTheme({
     }
   },
   palette: {
+    common:{
+main: '#0047AB'
+    },
     neutral: {
       100: '#F3F4F6',
       200: '#E5E7EB',
@@ -167,7 +174,7 @@ export const theme = createTheme({
     },
     divider: '#E6E8F0',
     primary: {
-      main: '#5048E5',
+      main: '#0047AB',
       light: '#828DF8',
       dark: '#3832A0',
       contrastText: '#FFFFFF'
@@ -241,9 +248,24 @@ export const theme = createTheme({
   ],
   typography: {
     button: {
-      fontWeight: 600
+      fontWeight: 600,
+      // textUnderline: 'italic',
     },
     fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"',
+    // fontFamily: [
+    //   '-apple-system',
+    //   'BlinkMacSystemFont',
+    //   '"Segoe UI"',
+    //   'Roboto',
+    //   '"Helvetica Neue"',
+    //   'Arial',
+    //   'sans-serif',
+    //   '"Apple Color Emoji"',
+    //   '"Segoe UI Emoji"',
+    //   '"Segoe UI Symbol"',
+    // ].join(','),   
+    
+    
     body1: {
       fontSize: '1rem',
       fontWeight: 400,
@@ -308,3 +330,5 @@ export const theme = createTheme({
     }
   }
 });
+theme = responsiveFontSizes(theme)
+export {theme}
