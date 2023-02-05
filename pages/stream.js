@@ -5,8 +5,7 @@ import { Box, Card, CardActions, CardContent, CardMedia, FormControl, InputLabel
 import Button from '@mui/material/Button';
 import Head from 'next/head';
 import HelperToolkit from '../src/components/elements/helperTooltip';
-import { timeSlot } from '../src/const/const';
-
+import { timeSlot } from '../src/consts/timeSlot';
 export default function Page() {
   const theme = useTheme();
   const [time, setTime] = useState('');
@@ -17,7 +16,7 @@ export default function Page() {
   return (<>
     <Head>
       <title>
-        FLOWery | Stream
+        FLOWary | Stream
       </title>
     </Head>
     <Box
@@ -26,15 +25,15 @@ export default function Page() {
         justifyContent: 'center',
         p: 1,
         m: 1,
-        mt: 10,
-        bgcolor: 'background.paper',
+        mt: 10
       }} >
       <Card
         sx={{
           width: '500px',
           borderRadius: 2,
           boxShadow: theme.shadows[25]
-        }}>
+        }}
+        >
         <CardMedia
           component='img'
           height='160'
@@ -47,12 +46,13 @@ export default function Page() {
             m: 1,
           }}>
           <Box
+          
             component="div"
             sx={{
               display: 'flex',
               justifyContent: 'space-between',
             }}>
-            <Typography gutterBottom variant='h6' component='div' mt='6px'>
+            <Typography gutterBottom component='div' variant='h6' mt='6px'>
               Recievers wallet address
             </Typography>
             <HelperToolkit title={"Stream money, don't miss honey!:)"} />
@@ -143,8 +143,6 @@ export default function Page() {
             sx={{
               height: 50,
               width: 170,
-              fontSize: theme.typography.h6,
-              color: theme.palette.text.secondary,
             }}
           >Send Stream</Button>
         </CardActions>

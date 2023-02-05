@@ -1,8 +1,9 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { useEffect } from 'react'
-import { ConnectWalletButton } from './connectWalletButton'
+// import { ConnectWalletButton } from './connectWalletButton'
 import { useDispatch } from 'react-redux'
 import { setAccount, setConnected } from '../../store/reducers/wallet/reducer';
+import { Button } from '@mui/material';
 
 function RenderConnectWalletButton({ chain, connected, account, openAccountModal, openChainModal, openConnectModal }) {
     const dispatch = useDispatch();
@@ -17,27 +18,29 @@ function RenderConnectWalletButton({ chain, connected, account, openAccountModal
 
     if (!connected) {
         return (
-            <ConnectWalletButton sx={{ width: '100%' }} onClick={openConnectModal} type="button">
+            <Button 
+            variant='outlined' size="large" onClick={openConnectModal} type="button">
                 CONNECT WALLET
-            </ConnectWalletButton>
+            </Button>
         )
     }
     if (chain.unsupported) {
         return (
-            <ConnectWalletButton onClick={openChainModal} type="button">
+            <Button variant='outlined' size="large" onClick={openChainModal} type="button">
                 Wrong network
-            </ConnectWalletButton>
+            </Button>
         )
     }
     return (
-        <div style={{ display: 'flex', gap: 12 }}>
-            <ConnectWalletButton
+        <div style={{ display: 'flex' }}>
+            <Button variant='outlined' size="large"
                 onClick={openAccountModal}
                 type="button"
+                
             >
                 {/* <UserIcon style={{ marginRight: "8px" }} /> */}
                 {account.displayName}
-            </ConnectWalletButton>
+            </Button>
         </div>
     )
 }
