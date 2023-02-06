@@ -1,16 +1,16 @@
 import Head from 'next/head';
-import { Box, Container, Typography} from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import { SettingsNotifications } from '../src/components/layout/settings-notifications';
+import { WrapCard } from '../src/components/pages/wrap/WrapCard';
 
 const Page = () => (
   <>
-    <Head>
+    {/* <Head>
       <title>
-      FLOWery | Wrap
+        FLOWery | Wrap
       </title>
     </Head>
- 
-        <Box
+    <Box
       component="main"
       sx={{
         flexGrow: 1,
@@ -28,8 +28,8 @@ const Page = () => (
         <Box sx={{ pt: 3 }}>
         </Box>
       </Container>
-    </Box>
-
+    </Box> */}
+    <WrapCard />
   </>
 );
 
