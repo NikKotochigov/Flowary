@@ -1,12 +1,12 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  console.log("🏃 Starting Deploying....")
+  console.log("Starting Deploying....")
 
   const [deployer] = await ethers.getSigners();
 
-  const Contract = await ethers.getContractFactory("Company");
-  const contract = await Contract.deploy("RogaAndKopita");
+  const Contract = await ethers.getContractFactory("StableCoin");
+  const contract = await Contract.deploy();
 
   await contract.deployed();
 
@@ -19,5 +19,3 @@ main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
-
-// npx hardhat run scripts/deployFactory.ts
