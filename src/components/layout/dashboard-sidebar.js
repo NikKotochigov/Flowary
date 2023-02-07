@@ -1,49 +1,47 @@
-import { useEffect } from 'react';
-import NextLink from 'next/link';
-import { useRouter } from 'next/router';
-import { Box, Button, Divider, Drawer, ListItem, Typography, useMediaQuery } from '@mui/material';
-import { ChartBar as ChartBarIcon } from '../../icons/chart-bar';
-import { Cog as CogIcon } from '../../icons/cog';
-import { Selector as SelectorIcon } from '../../icons/selector';
-import { ShoppingBag as ShoppingBagIcon } from '../../icons/shopping-bag';
-import { User as UserIcon } from '../../icons/user';
-import { Users as UsersIcon } from '../../icons/users';
-import { XCircle as XCircleIcon } from '../../icons/x-circle';
-import { Logo } from '../logo';
-import { NavItem } from './nav-item';
-import Image from 'next/image';
-
+import { useEffect } from "react";
+import NextLink from "next/link";
+import { useRouter } from "next/router";
+import { Box, Divider, Drawer, useMediaQuery } from "@mui/material";
+import { ChartBar as ChartBarIcon } from "../../icons/chart-bar";
+import { Cog as CogIcon } from "../../icons/cog";
+import { ShoppingBag as ShoppingBagIcon } from "../../icons/shopping-bag";
+import { User as UserIcon } from "../../icons/user";
+import { Users as UsersIcon } from "../../icons/users";
+import { XCircle as XCircleIcon } from "../../icons/x-circle";
+import { NavItem } from "./nav-item";
+import Image from "next/image";
+import { theme } from "../../theme";
 
 const items = [
   {
-    href: '/',
-    icon: (<ChartBarIcon fontSize="small" />),
-    title: 'Dashboard'
+    href: "/",
+    icon: <ChartBarIcon fontSize="small" />,
+    title: "Dashboard",
   },
   {
-    href: '/stream',
-    icon: (<UsersIcon fontSize="small" />),
-    title: 'Stream'
+    href: "/stream",
+    icon: <UsersIcon fontSize="small" />,
+    title: "Stream",
   },
   {
-    href: '/wrap',
-    icon: (<ShoppingBagIcon fontSize="small" />),
-    title: 'Wrap'
+    href: "/wrap",
+    icon: <ShoppingBagIcon fontSize="small" />,
+    title: "Wrap",
   },
   {
-    href: '/bridge',
-    icon: (<CogIcon fontSize="small" />),
-    title: 'Bridge'
+    href: "/bridge",
+    icon: <CogIcon fontSize="small" />,
+    title: "Bridge",
   },
   {
-    href: '/history',
-    icon: (<UserIcon fontSize="small" />),
-    title: 'Activity history'
+    href: "/history",
+    icon: <UserIcon fontSize="small" />,
+    title: "Activity history",
   },
   // {
-  //   href: '/login',
-  //   icon: (<LockIcon fontSize="small" />),
-  //   title: 'Login'
+  //   href: "/address",
+  //   icon: <UserIcon fontSize="small" />,
+  //   title: "Adress book",
   // },
   // {
   //   href: '/register',
@@ -51,20 +49,19 @@ const items = [
   //   title: 'Register'
   // },
   {
-    href: '/404',
-    icon: (<XCircleIcon fontSize="small" />),
-    title: 'Error'
-  }
+    href: "/404",
+    icon: <XCircleIcon fontSize="small" />,
+    title: "Error",
+  },
 ];
 
 export const DashboardSidebar = (props) => {
   const { open, onClose } = props;
   const router = useRouter();
-  const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'), {
+  const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"), {
     defaultMatches: true,
-    noSsr: false
+    noSsr: false,
   });
-
 
   useEffect(
     () => {
@@ -84,68 +81,31 @@ export const DashboardSidebar = (props) => {
     <>
       <Box
         sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          height: '100%'
+          display: "flex",
+          flexDirection: "column",
+          height: "100%",
         }}
       >
-          <Box sx={{ p: 3 }}>
-            <NextLink
-              href="/"
-              passHref
-            >
-              
-                <Logo
-                  sx={{
-                    height: 42,
-                    width: 42
-                  }}
-                />
-             
-            </NextLink>
-          </Box>
-          <Box sx={{ px: 2 }}>
-            <Box
-              sx={{
-                alignItems: 'center',
-                backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                cursor: 'pointer',
-                display: 'flex',
-                justifyContent: 'space-between',
-                px: 3,
-                py: '11px',
-                borderRadius: 1
-              }}
-            >
-              <div>
-                <Typography
-                  color="inherit"
-                  variant="subtitle1"
-                >
-                  Acme Inc
-                </Typography>
-                <Typography
-                  color="neutral.400"
-                  variant="body2"
-                >
-                  Your tier
-                  {' '}
-                  : Premium
-                </Typography>
-              </div>
-              <SelectorIcon
-                sx={{
-                  color: 'neutral.500',
-                  width: 14,
-                  height: 14
-                }}
-              />
-            </Box>
-          </Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <NextLink href="/" passHref>
+            <Image
+              alt="logo"
+              src="/static/images/Flowary.png"
+              width={200}
+              height={130}
+            />
+          </NextLink>
+        </Box>
         <Divider
           sx={{
-            borderColor: '#2D3748',
-            my: 3
+            borderColor: "white",
+            opacity: 0.5,
+            my: 3,
           }}
         />
         <Box sx={{ flexGrow: 1 }}>
@@ -158,23 +118,23 @@ export const DashboardSidebar = (props) => {
             />
           ))}
         </Box>
-        <Divider sx={{ borderColor: '#2D3748' }} />
+        <Divider sx={{ borderColor: "white", opacity: 0.5 }} />
         <Box
           sx={{
             px: 2,
-            py: 3
+            py: 3,
           }}
         >
           <Box
             sx={{
-              display: 'flex',
+              display: "flex",
               mt: 2,
-              mx: 'auto',
-              width: '240px',
-              '& img': {
-                borderRadius: '16px',
-                width: '100%'
-              }
+              mx: "auto",
+              width: "240px",
+              "& img": {
+                borderRadius: "16px",
+                width: "100%",
+              },
             }}
           >
             <Image
@@ -196,10 +156,10 @@ export const DashboardSidebar = (props) => {
         open
         PaperProps={{
           sx: {
-            backgroundColor: 'neutral.900',
-            color: '#FFFFFF',
-            width: 280
-          }
+            backgroundColor: "#0047AB",
+            // color: '#0047AB',
+            width: 280,
+          },
         }}
         variant="permanent"
       >
@@ -215,10 +175,10 @@ export const DashboardSidebar = (props) => {
       open={open}
       PaperProps={{
         sx: {
-          backgroundColor: 'neutral.900',
-          color: '#FFFFFF',
-          width: 280
-        }
+          backgroundColor: "#0047AB",
+          // color: '#FFFFFF',
+          width: 280,
+        },
       }}
       sx={{ zIndex: (theme) => theme.zIndex.appBar + 100 }}
       variant="temporary"
@@ -227,4 +187,3 @@ export const DashboardSidebar = (props) => {
     </Drawer>
   );
 };
-

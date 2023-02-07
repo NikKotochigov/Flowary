@@ -33,7 +33,6 @@
 // );
 // export default Page;
 
-import { ethers } from "ethers";
 import { useState, useEffect } from "react";
 import contract from "../contracts/erc20";
 import provider from "../contracts/provider";
@@ -105,7 +104,7 @@ const Page = ({symbol, name, num}) => {
             />
               <button
                 onClick={hadleSupply}
-                className="btn ml-3 h-7"
+                className="p-20 ml-3 h-7"
               >
                 Check
               </button>

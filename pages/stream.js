@@ -1,145 +1,155 @@
-// import Head from 'next/head';
-// import { Box, Container, Typography} from '@mui/material';
-// import { SettingsNotifications } from '../src/components/layout/settings-notifications';
-
-// const Page = () => (
-//   <>
-//     <Head>
-//       <title>
-//         CFLOWery | Stream
-//       </title>
-//     </Head>
-//         <Box
-//       component="main"
-//       sx={{
-//         flexGrow: 1,
-//         py: 8
-//       }}
-//     >
-//       <Container maxWidth="lg">
-//         <Typography
-//           sx={{ mb: 3 }}
-//           variant="h4"
-//         >
-//           STREAM
-//         </Typography>
-//         <SettingsNotifications />
-//         <Box sx={{ pt: 3 }}>
-//         </Box>
-//       </Container>
-//     </Box>
-
-//   </>
-// );
-
-
-// export default Page;
-import * as React from 'react';
-import Grid from '@mui/material/Grid';
+import React, { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-
+import { Box, Card, CardActions, CardContent, CardMedia, FormControl, InputLabel, MenuItem, Select, useTheme } from '@mui/material';
+import Button from '@mui/material/Button';
+import Head from 'next/head';
+import HelperToolkit from '../src/components/elements/helperTooltip';
+import { timeSlot } from '../src/consts/timeSlot';
 export default function Page() {
-  return (
-    <React.Fragment>
-      <Typography variant="h6" gutterBottom>
-        Shipping address
-      </Typography>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="firstName"
-            name="firstName"
-            label="First name"
-            fullWidth
-            autoComplete="given-name"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="lastName"
-            name="lastName"
-            label="Last name"
-            fullWidth
-            autoComplete="family-name"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
-            required
-            id="address1"
-            name="address1"
-            label="Address line 1"
-            fullWidth
-            autoComplete="shipping address-line1"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
-            id="address2"
-            name="address2"
-            label="Address line 2"
-            fullWidth
-            autoComplete="shipping address-line2"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="city"
-            name="city"
-            label="City"
-            fullWidth
-            autoComplete="shipping address-level2"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            id="state"
-            name="state"
-            label="State/Province/Region"
-            fullWidth
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="zip"
-            name="zip"
-            label="Zip / Postal code"
-            fullWidth
-            autoComplete="shipping postal-code"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="country"
-            name="country"
-            label="Country"
-            fullWidth
-            autoComplete="shipping country"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <FormControlLabel
-            control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
-            label="Use this address for payment details"
-          />
-        </Grid>
-      </Grid>
-    </React.Fragment>
+  const theme = useTheme();
+  const [time, setTime] = useState('');
+  const handleChange = (event) => {
+    setTime(event.target.value);
+  };
+
+  return (<>
+    <Head>
+      <title>
+        FLOWary | Stream
+      </title>
+    </Head>
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        p: 1,
+        m: 1,
+        mt: 10
+      }} >
+      <Card
+        sx={{
+          width: '500px',
+          borderRadius: 2,
+          boxShadow: theme.shadows[25]
+        }}
+        >
+        <CardMedia
+          component='img'
+          height='160'
+          image="/static/images/stream.jpg"
+          alt='stream picture'
+        />
+        <CardContent
+          sx={{
+            p: 1,
+            m: 1,
+          }}>
+          <Box
+          
+            component="div"
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+            }}>
+            <Typography gutterBottom component='div' variant='h6' mt='6px'>
+              Recievers wallet address
+            </Typography>
+            <HelperToolkit title={"Stream money, don't miss honey!:)"} />
+          </Box>
+
+          <Box
+            component="form"
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            <TextField fullWidth id="outlined-basic" label="Public address or ENS" variant="outlined" />
+          </Box>
+          <Box
+            component="div"
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+            }}>
+            <Typography gutterBottom variant='h6' component='div' ml='2px' mt='6px'>
+              Flow rate
+            </Typography>
+            <HelperToolkit title={"You could be highly motivated earning every second, tell about it to your employer!)"} />
+          </Box>
+
+          <Box
+            component="form"
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            <TextField fullWidth
+              sx={{
+                // '.MuiOutlinedInput-notchedOutline': { 
+                //   border: "1px solid #484850",
+                //   borderRadius: "5px 0 0 5px",
+                //   opacity: 0.2
+                // },
+                //  "& .Mui-focused .MuiOutlinedInput-notchedOutline": 
+                // { 
+                // border: "1px solid #484850",
+                // borderRadius: "5px 0 0 5px"
+                // },
+                // "&:hover": {
+                //   border: "1px solid #484850",
+                //   borderRadius: "5px 0 0 5px"
+                // },
+                // "&:hover .Mui-focused .MuiOutlinedInput-notchedOutline": {
+                //   border: 0,
+                //   // border: "1px solid #484850",
+                //   // borderRadius: "5px 0 0 5px"
+                // },
+                // "&:hover .MuiOutlinedInput-notchedOutline": {
+                //   border: 0,
+                //   // border: "1px solid #484850",
+                //   // borderRadius: "5px 0 0 5px"
+                // }
+              }}
+            />
+            <FormControl
+              sx={{ minWidth: 150 }}
+            >
+              <InputLabel
+                id="time-label"
+              >Choose period</InputLabel>
+              <Select
+                labelId="time-label"
+                id="time-select"
+                value={time}
+                label="Time"
+                onChange={handleChange}
+              >
+                {timeSlot.map(({ id, value }) => (<MenuItem key={id} value={value}>{id}</MenuItem>))}
+              </Select>
+            </FormControl>
+          </Box>
+        </CardContent>
+
+        <CardActions
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            m: 1
+          }} >
+          <Button variant="outlined"
+            sx={{
+              height: 50,
+              width: 170,
+            }}
+          >Send Stream</Button>
+        </CardActions>
+      </Card>
+    </Box>
+
+
+  </>
   );
 }
