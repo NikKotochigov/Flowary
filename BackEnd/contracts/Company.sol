@@ -1,89 +1,132 @@
 //SPDX-License-Identifier: Unlicense
-pragma solidity ^0.8.14;
+pragma solidity ^0.8.17;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
-import {
-    ISuperfluid, 
-    ISuperToken, 
-    ISuperApp
-} from "@superfluid-finance/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluid.sol";
-
-import { SuperTokenV1Library } from "@superfluid-finance/ethereum-contracts/contracts/apps/SuperTokenV1Library.sol";
+import { ERC20 } from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "./StreamLogic.sol";
 
 error Unauthorized();
-// owner => director // Add roles?
 
-contract Company is Ownable {
+ // ---------- PROBLEMS & TASKS--------------
+// owner => director // Add roles?
+// Shoud it be tru ProxY? Can we create new contract with proxy?
+// Banc Control
+// Refactor add employy & delete employee & modify employy
+
+contract Company is StreamLogic {
 
     // ADD EVENTS
+    event AddEmployee(address _who, uint _time);
+    event StartFlow(address _who, uint _time);
 
     string public name;
     uint public totalAmountEmployee;
 
     constructor (string memory _name){
         name = _name;
-        totalAmountEmployee = 1;
     }
 
     struct Employee{
         address who;
-        int96 flowRate;
+        uint256 flowRate; // 1 token / sec
         bool worker;
         //bool what kind of sallary he s going to get >>> h/$ or $/mounth
     }
-    mapping(address=>Employee) public allEmployee;
+    mapping(address => Employee) public allEmployee;
 
-    function addEmployee(address _who, int96 _rate) external onlyOwner {
-        Employee storage newEmployee = allEmployee[_who];
-        newEmployee.who = _who;
-        newEmployee.flowRate = _rate;
+    modifier employeeExists(address _who){
+            require(allEmployee[_who].worker, "This employee doesnt exist or deleted already");
+            _;
     }
 
-    // FUNC >> DELETE EMPLOYEE
+    // ------------------- MAIN FUNC ----------------
 
-    // FUNC >>  changeRate();
+    function addEmployee(address _who, uint256 _rate) external {
 
-// ----------- SUPERFLUID FUNCS ----------------
+           Employee memory newEmployee = Employee({
+			who: _who,
+			flowRate: _rate,
+			worker: true
+		});
 
-// (1) RECIVE SUPER TOKEN FROM SOMEONE
+		allEmployee[_who] = newEmployee;
 
-    using SuperTokenV1Library for ISuperToken;
+        totalAmountEmployee++;
 
-    ISuperToken public token;
-
-    function setSuperToken(address _token) public onlyOwner{
-        token = ISuperToken(_token);
+        emit AddEmployee(_who, block.timestamp);
     }
 
-    function balanceContract()public view returns(uint){
-        return token.balanceOf(address(this));
+    function modifyRate(address _who, uint256 _rate) external employeeExists(_who){
+
+        allEmployee[_who].flowRate = _rate;
     }
 
-
-    function sendLumpSumToContract(uint256 amount) external onlyOwner{
-        token.transferFrom(msg.sender, address(this), amount);
-    }
-// FUNCS FOR EMPLOYEE
-    function _createFlowFromContract(address receiver, int96 flowRate) private {
-        token.createFlow(receiver, flowRate);
-    }
-
-    function _deleteFlowFromContract(address receiver) private {
-        token.deleteFlow(address(this), receiver);
+    function deleteEmployee(address _who) external employeeExists(_who) {
+        // ADD arr funcs from StreamLogic -> delete employee from mapping
+        delete allEmployee[_who];
     }
 
 
-// ----------- PAYMENT ----------------
-    function startFlow()external{
-        require(allEmployee[msg.sender].worker, "Ops, you do not work here! Or we forgot to add you");
-        _createFlowFromContract(msg.sender, allEmployee[msg.sender].flowRate);
+
+//-------------------- SECURITY --------------
+// Set up all restrictoins tru DAO???
+
+    // Solution #1 (restriction on each stream)
+    uint public tokenLimitMaxHoursPerPerson = 20 hours; // Max amount hours of each stream with enough funds;
+
+    function validToStream(address _who)public view returns(bool){
+         return (allEmployee[_who].flowRate * tokenLimitMaxHoursPerPerson ) >= balanceContract();
     }
 
-    function finishFlow()external{
-        require(allEmployee[msg.sender].worker, "Ops, you do not work here! Or we forgot to add you");
-        _deleteFlowFromContract(msg.sender);
+   
+    // Solution #2 (restriction on all live stream)
+    // 1000$ TB => active stream++ | ar++ => cant create stream if not enough
+     uint public tokenLimitMaxHoursAllStream = 10 hours;
+    function validToStreamAll()public view returns(bool){
+        // FORMULA =>      tas * ar >= TL
+        // tas = total amount of active stream
+        // ar = avarage rate  ??? How to count (create new var) uint ar -> canculate each time when we add new employee
+        // TL = tokenLimitMaxHoursAllStream | set up by company? Decided by DAO? Immutable by default
     }
 
+    // Solution #3 (restriction to add new employee)
+     uint public hoursLimitToAddNewEmployee = 100 hours;
+     function valitToAdd()public view returns(bool){
+        // FORMULA =>      tae * ar * TL >= balanceOf(this)
+        // tae = total amount of all employee
+        // ar = avarage rate (look above)
+        // HL = hours limit
+
+        //PS "If company doesnt have enought tokens to pay all employee for next 100 hours they can add new employee"
+     }
+
+     //---- ADD BUFFER ---------
+     // rate / time /  money
+
+
+// -------------- FUNCS with EMPLOYEEs ----------------
+    //@dev Starts streaming token to employee
+    function start(address _who) public employeeExists(_who){
+        // put restriction
+        startStream(_who, allEmployee[_who].flowRate);
+    }
+
+    function finish(address _who) public employeeExists(_who){
+        uint256 salary = finishStream(_who);
+        // if(!overWroked){
+        //     function ifyouEmployDolboeb()
+        // }
+        token.transfer(_who, salary);
+    }
+
+
+
+    function withdrawEployee()public{
+        // FUCS abour streaming within existing stream
+    }
+// Decimals = 6 | 1 USDC = 1_000_000 tokens
+    function getDecimals()public view returns(uint){
+        return token.decimals();
+    }
 
     receive() external payable { }
     fallback() external payable { }
