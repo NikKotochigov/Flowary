@@ -8,12 +8,15 @@
     "@mui/material": "^5.11.7",
     "@mui/system": "^5.11.7",
     "@mui/utils": "^5.11.7",
+    "@mui/x-date-pickers": "^5.0.17",
     "@rainbow-me/rainbowkit": "^0.8.1",
     "@reduxjs/toolkit": "^1.9.2",
+    "dayjs": "^1.11.7",
     "ethers": "^5.7.2",
     "next": "^13.1.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-jazzicon": "^1.0.4",
     "react-redux": "^8.0.5",
     "wagmi": "^0.9.6"
   }

@@ -27,8 +27,8 @@ const handleCheck = () => setCheck(!check)
           justifyContent: "space-between",
         }}
       >
-        <Typography variant="h2" m={5} color="common.main">
-          Personal page
+        <Typography variant="h2" m={5} color="warning.light">
+          COMPANY NAME page
         </Typography>
         <Box 
                     sx={{
