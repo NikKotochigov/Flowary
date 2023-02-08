@@ -3,7 +3,7 @@ export const table = [
         status: "finished",
     date: "2023-01-01",
     time: '21:23:00',
-     token: 'USDT',
+     token: 'USDC',
      from: '0x1AFaF7463894656662E6BdcbDC7752000000acbB',
      txhash: "0xff93ae379a676792aec24761354371c95df3283522b6cded378079f675259cea",
      chain: 'goerly'
@@ -21,7 +21,7 @@ chain: 'goerly'
     status: "finished",
     date: '02.01.2023',
 time: '08:14:44',
-token: 'USDT',
+token: 'btc',
 from: '0x1AFaF7463894656662E6BdcbDC7752000000acbB',
 txhash: "0xff93ae379a676792aec24761354371c95df3283522b6cded378079f675259cea",
 chain: 'goerly'
@@ -30,7 +30,7 @@ chain: 'goerly'
     status: "finished",
     date: '02.01.2023',
 time: '21:23:00',
- token: 'USDT',
+ token: 'eth',
  from: '0x1AFaF7463894656662E6BdcbDC7752000000acbB',
  txhash: "0xff93ae379a676792aec24761354371c95df3283522b6cded378079f675259cea",
  chain: 'goerly'
@@ -39,7 +39,7 @@ time: '21:23:00',
 status: "active",
 date: '03.01.2023',
 time: '17:45:50',
-token: 'USDT',
+token: 'bnb',
 from: '0x1AFaF7463894656662E6BdcbDC7752000000acbB',
 txhash: "0xff93ae379a676792aec24761354371c95df3283522b6cded378079f675259cea",
 chain: 'goerly'
@@ -48,7 +48,7 @@ chain: 'goerly'
 status: "finished",
 date: '03.01.2023',
 time: '08:14:44',
-token: 'USDT',
+token: 'usdc',
 from: '0x1AFaF7463894656662E6BdcbDC7752000000acbB',
 txhash: "0xff93ae379a676792aec24761354371c95df3283522b6cded378079f675259cea",
 chain: 'goerly'

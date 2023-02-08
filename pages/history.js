@@ -292,11 +292,17 @@ console.log(newRows)
                         mt: 1,
                       }}
                     >
-                      <Jazzicon
+                      {/* <Jazzicon
                         diameter={30}
                         seed={jsNumberForAddress(row.from)}
-                      />
-                      {row.token}
+                      /> */}
+                      <img
+                          alt="coin"
+                          src={`https://assets.coincap.io/assets/icons/${row.token.toLowerCase()}@2x.png`}
+                          width={30}
+                          height={30}
+                        />
+                      {row.token.toUpperCase()}
                     </TableCell>
 
                     <TableCell
