@@ -43,7 +43,7 @@ const Page = () => {
   function createData(id, status, date, token, from, txhash, chain, time) {
     return { id, status, date, token, from, txhash, chain, time };
   }
-  
+
   const rows = [
     createData(
       table[0].id,
@@ -105,15 +105,15 @@ const Page = () => {
       table[5].chain,
       table[5].time
     ),
-  
+
   ];
- 
+
   const newRows = rows.filter(i => valueStart.format('DD/MM/YYYY') < dayjs(i.date).format('DD/MM/YYYY') < valueStop.format('DD/MM/YYYY'))
-  console.log('start :',valueStart.format('DD/MM/YYYY'));
-  console.log('stop :',valueStop.format('DD/MM/YYYY'));
-  console.log('test 2:',dayjs(table[2].date).format('DD/MM/YYYY'))
-console.log('test :',dayjs(table[0].date).format('DD/MM/YYYY')===valueStart.format('DD/MM/YYYY'))
-console.log(newRows)
+  console.log('start :', valueStart.format('DD/MM/YYYY'));
+  console.log('stop :', valueStop.format('DD/MM/YYYY'));
+  console.log('test 2:', dayjs(table[2].date).format('DD/MM/YYYY'))
+  console.log('test :', dayjs(table[0].date).format('DD/MM/YYYY') === valueStart.format('DD/MM/YYYY'))
+  console.log(newRows)
   return (
     <>
       <Typography variant="h2" m={5} color="warning.light">
@@ -221,7 +221,7 @@ console.log(newRows)
         </Box>
       </Box>
 
-      <Box
+      {/* <Box
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -268,14 +268,14 @@ console.log(newRows)
                     <TableCell
                       align="left"
                     >
-                        <Typography
-                          // color={row.status == 'finished' ? 'red' : 'green'}
-                          sx={{ fontSize: 16 }}
-                        >
-                          {" "}
-                          {`Stream ${row.status}`}
-                        </Typography>
-                        <Typography fontSize={12}>{row.time}</Typography>
+                      <Typography
+                        // color={row.status == 'finished' ? 'red' : 'green'}
+                        sx={{ fontSize: 16 }}
+                      >
+                        {" "}
+                        {`Stream ${row.status}`}
+                      </Typography>
+                      <Typography fontSize={12}>{row.time}</Typography>
                     </TableCell>
 
                     <TableCell
@@ -295,11 +295,11 @@ console.log(newRows)
                       }}
                     >
                       <img
-                          alt="coin"
-                          src={`https://assets.coincap.io/assets/icons/${row.token.toLowerCase()}@2x.png`}
-                          width={30}
-                          height={30}
-                        />
+                        alt="coin"
+                        src={`https://assets.coincap.io/assets/icons/${row.token.toLowerCase()}@2x.png`}
+                        width={30}
+                        height={30}
+                      />
                       {row.token.toUpperCase()}
                     </TableCell>
 
@@ -371,8 +371,8 @@ console.log(newRows)
             </TableBody>
           </Table>
         </TableContainer>
-      </Box>
-      {/* <TableS rows={{rows}} /> */}
+      </Box> */}
+      <TableS rows={rows} />
     </>
   );
 };
