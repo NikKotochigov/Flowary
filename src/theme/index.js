@@ -3,9 +3,6 @@ import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 import bg_sidebar from '../../public/static/images/bg_sidebar.jpg'
 
 let theme = createTheme({
-  drawerPaper: {
-    backgroundImage: `url(${bg_sidebar})`
-  },
   breakpoints: {
     values: {
       xs: 0,
@@ -56,6 +53,13 @@ let theme = createTheme({
         }
       }
     },
+    // MuiTableCell:
+    // {styleOverrides: {
+    //   root: {
+    //     borderBottom: "1px solid  #484850",
+    //     }
+    //   }
+    // },
     // MuiButtonBase: {
     //   defaultProps: {
     //     disableRipple: true

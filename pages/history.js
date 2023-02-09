@@ -125,7 +125,7 @@ console.log(newRows)
         sx={{
           justifyContent: "space-between",
           display: {
-            xs: "block", // 100%
+            // xs: "block", // 100%
             sm: "block", //600px
             md: "flex", //900px
           },
@@ -281,7 +281,7 @@ console.log(newRows)
                     <TableCell
                       align="center"
                       sx={{
-                        alignItems: "center",
+                        // alignItems: "center",
                         display: {
                           xs: "none", // 100%
                           sm: "none", //600px
@@ -289,13 +289,11 @@ console.log(newRows)
                         },
                         gap: 2,
                         fontSize: 14,
-                        mt: 1,
+                        // mt: 2,
+                        p: 3,
+                        // border: 1
                       }}
                     >
-                      {/* <Jazzicon
-                        diameter={30}
-                        seed={jsNumberForAddress(row.from)}
-                      /> */}
                       <img
                           alt="coin"
                           src={`https://assets.coincap.io/assets/icons/${row.token.toLowerCase()}@2x.png`}

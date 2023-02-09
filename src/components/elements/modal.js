@@ -51,27 +51,30 @@ const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function BasicModal({ nameModal, children }) {
-  const [open, setOpen] = useState(false);
+export default function BasicModal({ nameModal, children, open, handleClickOpen, minW }) {
+  // const [open, setOpen] = useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(!open);
-  };
+  // const handleClickOpen = () => {
+  //   setOpen(!open);
+  // };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button variant="outlined" size="large" onClick={handleClickOpen}
+       sx={{
+        minWidth: {minW},
+      }}>
         {nameModal}
       </Button>
       <Dialog
         open={open}
         TransitionComponent={Transition}
         keepMounted
-        onClose={handleClose}
+        onClose={handleClickOpen}
         aria-describedby="alert-dialog-slide-description"
       >
         <DialogActions
