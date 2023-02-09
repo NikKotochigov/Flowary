@@ -14,10 +14,10 @@
     "dayjs": "^1.11.7",
     "ethers": "^5.7.2",
     "next": "^13.1.6",
-    "react": "^18.2.0",
+    "react": "^18.2.0"
   },
   "devDependencies": {
-    "@openzeppelin/hardhat-upgrades": "^1.22.1"
+    "@openzeppelin/hardhat-upgrades": "^1.22.1",
     "react-dom": "^18.2.0",
     "react-jazzicon": "^1.0.4",
     "react-redux": "^8.0.5",
