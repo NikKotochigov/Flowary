@@ -38,16 +38,16 @@ const items = [
     icon: <UserIcon fontSize="small" />,
     title: "Activity history",
   },
-  // {
-  //   href: "/address",
-  //   icon: <UserIcon fontSize="small" />,
-  //   title: "Adress book",
-  // },
-  // {
-  //   href: '/register',
-  //   icon: (<UserAddIcon fontSize="small" />),
-  //   title: 'Register'
-  // },
+  {
+    href: "/employee",
+    icon: <UserIcon fontSize="small" />,
+    title: "Employee page",
+  },
+  {
+    href: '/company',
+    icon: (<UserIcon fontSize="small" />),
+    title: 'Company page'
+  },
   {
     href: "/404",
     icon: <XCircleIcon fontSize="small" />,

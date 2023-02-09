@@ -5,7 +5,7 @@ import { ConnectWallet } from '../connect-wallet/connectWallet';
 
 const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
-  boxShadow: theme.shadows[25]
+  boxShadow: theme.shadows[15]
 }));
 
 export const DashboardNavbar = (props) => {

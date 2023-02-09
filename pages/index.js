@@ -8,28 +8,50 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import { useState } from "react";
+import { Stack } from "@mui/system";
+import { useEffect, useState } from "react";
 import BasicModal from "../src/components/elements/modal";
-
 import User from "../src/components/user";
 import { goods } from "../src/consts/data";
+
+
 const Page = () => {
-  const theme = useTheme();
+const theme = useTheme();
 //   const [active, setActive] = useState(false);
 //   const handleOpen = () => setActive(true);
-const [check, setCheck] = useState(false)
-const handleCheck = () => setCheck(!check)
-  return (
+// const [check, setCheck] = useState(false)
+// const handleCheck = () => setCheck(!check)
+  
+return (
     <>
-      <Box
+{/* <Box
         sx={{
-          display: "flex",
+          display: {
+            // xs: "block", // 100%
+            sm: "block", //600px
+            md: "flex", //900px
+          },
           justifyContent: "space-between",
         }}
       >
-        <Typography variant="h2" m={5} color="common.main">
-          Personal page
+                <Box 
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                        gap: 2,
+                      m: 7
+                    }}
+        >
+        <Typography variant="h3" color="error.main">
+          COMPANY page
         </Typography>
+        <Button variant="outlined" size="large"
+sx={{
+  minWidth: "200px",
+}}
+>Activity history</Button>   
+        </Box>
         <Box 
                     sx={{
                       display: "flex",
@@ -48,9 +70,9 @@ sx={{
 }}
 >Load deposit</Button>      
         </Box>
-      </Box>
+</Box>
 
-      <Box
+<Box
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -103,8 +125,7 @@ sx={{
       : <Button variant="outlined" onClick={handleCheck}>Confirm remove</Button>}
 </Box>
 
-
-      <Box
+<Box
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -115,7 +136,21 @@ sx={{
             <User key={item.id} {...item} check={check}/>
           ))}
         </Grid>
-      </Box>
+</Box> */}
+
+
+
+  <Button size="large" variant="outlined"
+  sx={{width: '400px', m: 5, fontSize: '20px'}}
+  >Create company</Button>
+  <Button size="large" variant="outlined"
+    sx={{width: '400px', m: 5, fontSize: '20px'}}
+  >I'm employer</Button>
+  <Button size="large" variant="outlined"
+    sx={{width: '400px', m: 5, fontSize: '20px'}}
+  >I'm employee</Button>
+
+
     </>
   );
 };

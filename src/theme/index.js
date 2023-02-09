@@ -3,9 +3,6 @@ import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 import bg_sidebar from '../../public/static/images/bg_sidebar.jpg'
 
 let theme = createTheme({
-  drawerPaper: {
-    backgroundImage: `url(${bg_sidebar})`
-  },
   breakpoints: {
     values: {
       xs: 0,
@@ -16,15 +13,18 @@ let theme = createTheme({
     }
   },
   components: {
-        // MuiOutlinedInput: {
-        //   styleOverrides: {
-        //     root: {
-        //    [`& .${outlinedInputClasses.notchedOutline}`]: {
-        //         border: 0,
-        //       }
-        //     }
-        //   }
-        // },
+        MuiOutlinedInput: {
+          styleOverrides: {
+            root: {
+          //  [`& .${outlinedInputClasses.notchedOutline}`]: {
+          //       border: 0,
+          //     }
+          ["&:hover"]: {
+            boxShadow:  '0 2px 14px 0 rgb(32 40 45 / 30%)'
+                      },
+            }
+          }
+        },
     MuiButton: {
       defaultProps: {
         disableElevation: true
@@ -53,6 +53,13 @@ let theme = createTheme({
         }
       }
     },
+    // MuiTableCell:
+    // {styleOverrides: {
+    //   root: {
+    //     borderBottom: "1px solid  #484850",
+    //     }
+    //   }
+    // },
     // MuiButtonBase: {
     //   defaultProps: {
     //     disableRipple: true
@@ -121,29 +128,29 @@ let theme = createTheme({
     //     }
     //   }
     // },
-    MuiTableHead: {
-      styleOverrides: {
-        root: {
-          backgroundColor: '#F3F4F6',
-          '.MuiTableCell-root': {
-            color: '#374151'
-          },
-          borderBottom: 'none',
-          '& .MuiTableCell-root': {
-            borderBottom: 'none',
-            fontSize: '12px',
-            fontWeight: 600,
-            lineHeight: 1,
-            letterSpacing: 0.5,
-            textTransform: 'uppercase'
-          },
-          '& .MuiTableCell-paddingCheckbox': {
-            paddingTop: 4,
-            paddingBottom: 4
-          }
-        }
-      }
-    }
+    // MuiTableHead: {
+    //   styleOverrides: {
+    //     root: {
+    //       backgroundColor: '#F3F4F6',
+    //       '.MuiTableCell-root': {
+    //         color: '#374151'
+    //       },
+    //       borderBottom: 'none',
+    //       '& .MuiTableCell-root': {
+    //         borderBottom: 'none',
+    //         fontSize: '12px',
+    //         fontWeight: 600,
+    //         lineHeight: 1,
+    //         letterSpacing: 0.5,
+    //         textTransform: 'uppercase'
+    //       },
+    //       '& .MuiTableCell-paddingCheckbox': {
+    //         paddingTop: 4,
+    //         paddingBottom: 4
+    //       }
+    //     }
+    //   }
+    // }
   },
   palette: {
     common:{
