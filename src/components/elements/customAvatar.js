@@ -43,7 +43,7 @@ export default function CustomAvatar({n}) {
         bgcolor: "common.main",
         width: 100,
         height: 100,
-        m:2,
+        m: 2,
         fontSize: '40px'
       }}>
 {stringAvatar(n)}    

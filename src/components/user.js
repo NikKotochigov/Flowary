@@ -16,6 +16,7 @@ import CustomBadge from "./elements/badge";
 import ControlCheck from "./elements/controlCheck";
 import CustomAvatar from "./elements/customAvatar";
 import BasicModal from "./elements/modal";
+import ManageAccountsRoundedIcon from '@mui/icons-material/ManageAccountsRounded';
 
 const GoodsItem = ({ name, check }) => {
   const theme = useTheme();
@@ -66,17 +67,22 @@ const GoodsItem = ({ name, check }) => {
           },
           borderRadius: 2,
           boxShadow: theme.shadows[25],
-          // minWidth: 300,
+          minHeight: 160,
           alignItems: "center",
         }}
       >
-        {startstop ? (
+        <Box sx={{maxWidth: '130px', justifyContent: 'space-between', display: 'flex'}}>
+             {startstop ? (
           <CustomBadge content={"Active stream"}>
-            <CustomAvatar n={name} />
-          </CustomBadge>
+            <CustomAvatar n={name}  />
+         </CustomBadge>
         ) : (
           <CustomAvatar n={name} />
-        )}
+        )} 
+  <ManageAccountsRoundedIcon />
+        
+        </Box>
+    
         <CardContent>
           <Typography variant="h6" component="h3">
             {name}
@@ -108,40 +114,46 @@ const GoodsItem = ({ name, check }) => {
                 Stop stream
               </Button>
             ) : (
-              <BasicModal
-                nameModal={"Start Stream"}
-                open={open}
-                handleClickOpen={handleClickOpen}
-                // handleClose={handleClose}
-              >
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: 2,
-                    width: 400,
-                  }}
-                >
-                  <CardMedia
-                    component="img"
-                    height="160"
-                    image="/static/images/stream.jpg"
-                    alt="stream picture"
-                  />
-                  <TextField
-                    fullWidth
-                    label="Amount per hour"
-                    variant="outlined"
-                    onChange={(e) => setAmountPerHour(e.target.value)}
-                  />
-                  <Box onClick={handleClickOpen}>
-                    <Button variant="outlined" onClick={handleToggleClick}>
-                      Start stream
-                    </Button>
-                  </Box>
-                </Box>
-              </BasicModal>
+              <Button
+              variant="outlined"
+              onClick={handleToggleClick}
+            >
+              Start stream
+            </Button>
+              // <BasicModal
+              //   nameModal={"Start Stream"}
+              //   open={open}
+              //   handleClickOpen={handleClickOpen}
+              //   // handleClose={handleClose}
+              // >
+              //   <Box
+              //     sx={{
+              //       display: "flex",
+              //       flexDirection: "column",
+              //       alignItems: "center",
+              //       gap: 2,
+              //       width: 400,
+              //     }}
+              //   >
+              //     <CardMedia
+              //       component="img"
+              //       height="160"
+              //       image="/static/images/stream.jpg"
+              //       alt="stream picture"
+              //     />
+              //     <TextField
+              //       fullWidth
+              //       label="Amount per hour"
+              //       variant="outlined"
+              //       onChange={(e) => setAmountPerHour(e.target.value)}
+              //     />
+              //     <Box onClick={handleClickOpen}>
+              //       <Button variant="outlined" onClick={handleToggleClick}>
+              //         Start stream
+              //       </Button>
+              //     </Box>
+              //   </Box>
+              // </BasicModal>
             )}
           </CardActions>
         ) : (
