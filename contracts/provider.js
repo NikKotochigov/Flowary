@@ -10,3 +10,5 @@ if(typeof window !== 'undefined' && window?.ethereum){
 }
 
 export default provider
+
+

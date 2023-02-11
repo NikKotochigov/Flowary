@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   Card,
   CardMedia,
@@ -9,146 +8,85 @@ import {
   useTheme,
 } from "@mui/material";
 import { Stack } from "@mui/system";
-import { useEffect, useState } from "react";
 import BasicModal from "../src/components/elements/modal";
 import User from "../src/components/user";
 import { goods } from "../src/consts/data";
+import { useState, useEffect } from "react";
+import contract from "../contracts/erc20";
+import provider from "../contracts/provider";
+import { ethers } from "ethers";
+import { useRouter } from "next/router";
+import conectSigner from "../contracts/SIGNER";
+import { Box, Divider } from "@mui/material";
+import getCompanyContract from "../contracts/erc20";
+import connectContract from "../contracts/erc20";
+import { useDispatch } from 'react-redux'
 
 
 const Page = () => {
 const theme = useTheme();
-//   const [active, setActive] = useState(false);
-//   const handleOpen = () => setActive(true);
+  const [open, setOpen] = useState(false);
+  const handleClickOpen = () => setOpen(prev => !prev);
 // const [check, setCheck] = useState(false)
 // const handleCheck = () => setCheck(!check)
-  
+const [add, setAdd] = useState('');
+const [addTwo, setAddTwo] = useState(0);
+const [result, setResult] = useState()
+const router = useRouter();
+const dispatch = useDispatch();
+const handleConnectCompany = async () => {
+  connectContract(add, dispatch)
+  router.push('/bridge')
+};
+
+
 return (
     <>
-{/* <Box
-        sx={{
-          display: {
-            // xs: "block", // 100%
-            sm: "block", //600px
-            md: "flex", //900px
-          },
-          justifyContent: "space-between",
-        }}
-      >
-                <Box 
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                        gap: 2,
-                      m: 7
-                    }}
-        >
-        <Typography variant="h3" color="error.main">
-          COMPANY page
-        </Typography>
-        <Button variant="outlined" size="large"
-sx={{
-  minWidth: "200px",
-}}
->Activity history</Button>   
-        </Box>
-        <Box 
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      gap: 2,
-                      m: 7
-                    }}
-        >
-                     <Typography variant="h4" color="common.main">
-          Avaibale balance: 1000$</Typography>
-
-    <Button variant="outlined" size="large"
-sx={{
-  minWidth: "200px",
-}}
->Load deposit</Button>      
-        </Box>
-</Box>
-
-<Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          gap: 2,
-          mb: 3,
-        }}
-      >
-      {!check 
-      ? (<>
-        <BasicModal nameModal={"Add reciever"}>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: 2,
-              width: 400
-            }}
-          >
-              <CardMedia
-          component='img'
-          height='160'
-          image="/static/images/stream.jpg"
-          alt='stream picture'
-        />
-            <TextField
-              fullWidth
-              label="Name of new reciever"
-              variant="outlined"
-            />
-            <TextField
-              fullWidth
-              label="Address of new reciever"
-              variant="outlined"
-            />
-            <Button
-              variant="outlined"
-              sx={{
-                width: 170,
-                // fontSize: theme.typography.h6,
-                // color: theme.palette.text.primary,
-              }}
-            >
-              Add info
-            </Button>
-          </Box>
-        </BasicModal>
-        <Button variant="outlined" onClick={handleCheck}>Remove reciever</Button>
-      </>)
-      : <Button variant="outlined" onClick={handleCheck}>Confirm remove</Button>}
-</Box>
-
-<Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <Grid container spacing={3} maxWidth={800}>
-          {goods.map((item) => (
-            <User key={item.id} {...item} check={check}/>
-          ))}
-        </Grid>
-</Box> */}
-
-
-
   <Button size="large" variant="outlined"
   sx={{width: '400px', m: 5, fontSize: '20px'}}
   >Create company</Button>
-  <Button size="large" variant="outlined"
-    sx={{width: '400px', m: 5, fontSize: '20px'}}
-  >I'm employer</Button>
-  <Button size="large" variant="outlined"
-    sx={{width: '400px', m: 5, fontSize: '20px'}}
-  >I'm employee</Button>
+
+<BasicModal 
+          nameModal={"Company exist"}
+          open={open}
+          handleClickOpen={handleClickOpen}
+          minW={400}
+>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: 2,
+                width: 400
+              }}
+            >
+                <CardMedia
+            component='img'
+            height='160'
+            image="/static/images/stream.jpg"
+            alt='stream picture'
+          />
+              <TextField
+                fullWidth
+                label="Amount of payment"
+                variant="outlined"
+                onChange={(event) => setAdd(event.target.value)}
+
+              />
+          
+              <Button
+                variant="outlined"
+                sx={{
+                  width: 170,
+                }}
+                onClick={handleConnectCompany}
+              >
+               Connect
+              </Button>
+            </Box>
+          </BasicModal>
+
 
 
     </>
@@ -156,3 +94,16 @@ sx={{
 };
 
 export default Page;
+
+
+
+
+
+
+
+
+
+
+ 
+
+

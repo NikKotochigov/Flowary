@@ -90,14 +90,15 @@ export const DashboardSidebar = (props) => {
           sx={{
             display: "flex",
             justifyContent: "center",
+            mt: 3
           }}
         >
           <NextLink href="/" passHref>
             <Image
               alt="logo"
-              src="/static/images/Flowary.png"
-              width={200}
-              height={130}
+              src="/static/images/logoTwo.png"
+              width={250}
+              height={100}
             />
           </NextLink>
         </Box>
@@ -187,3 +188,4 @@ export const DashboardSidebar = (props) => {
     </Drawer>
   );
 };
+
